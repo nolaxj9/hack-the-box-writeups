@@ -302,9 +302,7 @@ Resolver máquinas especiales como equipo.
 ## 📞 Contacto
 
 - **Issues & Discussions:** GitHub
-- **Email:** [tu-email@ejemplo.com]
-- **Twitter:** [@tu_usuario]
-- **LinkedIn:** [Tu Perfil]
+- **LinkedIn:** [kevin-german-grossenbacher/]
 
 ---
 
