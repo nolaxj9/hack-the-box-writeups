@@ -483,5 +483,5 @@ otro_comando útil
 
 ---
 
-**Última actualización:** DD/MM/YYYY  
+**Última actualización:** 28/7/2026  
 **Estado:** ✅ Completado | 🟡 En Progreso | ❌ Sin iniciar
