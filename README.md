@@ -356,7 +356,6 @@ Si encontraste útil este repositorio:
 
 ### 🎯 Hecho con ❤️ por alguien aprendiendo Pentesting
 
-![Hack the Box Badge](https://www.hackthebox.com/badge/image/YOUR_ID)
 
 **Última actualización:** 2024  
 **Versión:** 1.0.0  
