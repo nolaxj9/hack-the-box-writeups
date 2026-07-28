@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack the Box - Documentación Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .preview-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95em;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 0.95em;
+            font-family: 'Courier New', monospace;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background-color: #f8f9fa;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background: #e8e8e8;
+        }
+        
+        .preview-content {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .preview-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .preview-section h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .preview-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+        
+        .preview-section table th,
+        .preview-section table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .preview-section table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .difficulty-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border-left: 3px solid #667eea;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section, .preview-section {
+                max-height: none;
+            }
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Hack the Box Documentation Tool</h1>
+            <p>Documentación profesional de máquinas siguiendo PETS + MITRE ATT&CK</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- FORM SECTION -->
+            <div class="form-section">
+                <div class="success-message" id="successMsg">✅ Documento generado correctamente</div>
+                
+                <!-- Información General -->
+                <div class="section-title">📋 Información General</div>
+                
+                <div class="form-group">
+                    <label>Nombre de la Máquina *</label>
+                    <input type="text" id="machineName" placeholder="ej: Lame, Retired, etc." required>
+                </div>
+                
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Dificultad *</label>
+                        <select id="difficulty" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="🟩 Fácil">Fácil</option>
+                            <option value="🟨 Media">Media</option>
+                            <option value="🟥 Difícil">Difícil</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>IP Objetivo *</label>
+                        <input type="text" id="targetIP" placeholder="10.10.11.XXX" required>
+                    </div>
+                </div>
+                
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>SO Objetivo</label>
+                        <select id="targetOS">
+                            <option value="">Seleccionar...</option>
+                            <option value="Linux">Linux</option>
+                            <option value="Windows">Windows</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tiempo Total (horas)</label>
+                        <input type="number" id="totalTime" min="0" step="0.5" placeholder="2.5">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Descripción de la Máquina</label>
+                    <textarea id="description" placeholder="Breve descripción..."></textarea>
+                </div>
+                
+                <!-- Reconocimiento -->
+                <div class="section-title">🔍 Reconocimiento Pasivo</div>
+                
+                <div class="form-group">
+                    <label>Información Encontrada</label>
+                    <textarea id="reconnaissance" placeholder="Datos de WHOIS, Shodan, etc..."></textarea>
+                </div>
+                
+                <!-- Enumeración -->
+                <div class="section-title">📡 Enumeración</div>
+                
+                <div class="form-group">
+                    <label>Puertos Encontrados</label>
+                    <textarea id="ports" placeholder="Puerto 22 - SSH
+Puerto 80 - HTTP
+..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Vulnerabilidades Identificadas</label>
+                    <textarea id="vulnerabilities" placeholder="CVE-XXXX-XXXXX: Descripción
+..."></textarea>
+                </div>
+                
+                <!-- Explotación -->
+                <div class="section-title">💥 Explotación</div>
+                
+                <div class="form-group">
+                    <label>Método de Explotación</label>
+                    <textarea id="exploitation" placeholder="SQL Injection en /login.php
+..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Comandos Utilizados</label>
+                    <textarea id="commands" placeholder="sqlmap -u 'http://...' --dbs
+..."></textarea>
+                </div>
+                
+                <!-- Post-Explotación -->
+                <div class="section-title">🚀 Post-Explotación</div>
+                
+                <div class="form-group">
+                    <label>Método de Escalada</label>
+                    <textarea id="escalation" placeholder="Exploit de kernel CVE-XXXX
+..."></textarea>
+                </div>
+                
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>User Flag</label>
+                        <input type="text" id="userFlag" placeholder="flag{...}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Root Flag</label>
+                        <input type="text" id="rootFlag" placeholder="flag{...}">
+                    </div>
+                </div>
+                
+                <!-- Lecciones -->
+                <div class="section-title">📚 Lecciones Aprendidas</div>
+                
+                <div class="form-group">
+                    <label>Conceptos Clave Descubiertos</label>
+                    <textarea id="lessons" placeholder="Vulnerabilidad X permite...
+Herramienta Y fue útil para..."></textarea>
+                </div>
+                
+                <!-- Botones -->
+                <div class="button-group">
+                    <button class="btn-primary" onclick="generatePreview()">📊 Generar Previsualización</button>
+                    <button class="btn-secondary" onclick="downloadMarkdown()">📥 Descargar Markdown</button>
+                    <button class="btn-secondary" onclick="clearForm()">🗑️ Limpiar Formulario</button>
+                </div>
+            </div>
+            
+            <!-- PREVIEW SECTION -->
+            <div class="preview-section">
+                <div id="preview">
+                    <h2>Previsualización del Documento</h2>
+                    <p style="color: #999;">Complete el formulario y haga clic en "Generar Previsualización" para ver el resultado.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function generatePreview() {
+            const machineData = {
+                machineName: document.getElementById('machineName').value,
+                difficulty: document.getElementById('difficulty').value,
+                targetIP: document.getElementById('targetIP').value,
+                targetOS: document.getElementById('targetOS').value,
+                totalTime: document.getElementById('totalTime').value,
+                description: document.getElementById('description').value,
+                reconnaissance: document.getElementById('reconnaissance').value,
+                ports: document.getElementById('ports').value,
+                vulnerabilities: document.getElementById('vulnerabilities').value,
+                exploitation: document.getElementById('exploitation').value,
+                commands: document.getElementById('commands').value,
+                escalation: document.getElementById('escalation').value,
+                userFlag: document.getElementById('userFlag').value,
+                rootFlag: document.getElementById('rootFlag').value,
+                lessons: document.getElementById('lessons').value
+            };
+            
+            if (!machineData.machineName || !machineData.targetIP) {
+                alert('⚠️ Nombre de máquina e IP objetivo son requeridos');
+                return;
+            }
+            
+            const previewHTML = `
+                <h2>🎯 ${machineData.machineName} <span class="difficulty-badge ${getDifficultyClass(machineData.difficulty)}">${machineData.difficulty}</span></h2>
+                
+                <h3>Información General</h3>
+                <table>
+                    <tr>
+                        <td><strong>IP Objetivo:</strong></td>
+                        <td>${machineData.targetIP}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sistema Operativo:</strong></td>
+                        <td>${machineData.targetOS || 'No especificado'}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tiempo Total:</strong></td>
+                        <td>${machineData.totalTime ? machineData.totalTime + ' horas' : 'No especificado'}</td>
+                    </tr>
+                </table>
+                
+                ${machineData.description ? `<h3>Descripción</h3><p>${machineData.description.replace(/\n/g, '<br>')}</p>` : ''}
+                
+                ${machineData.reconnaissance ? `<h3>🔍 Reconocimiento Pasivo</h3><div class="code-block">${machineData.reconnaissance.replace(/\n/g, '<br>')}</div>` : ''}
+                
+                ${machineData.ports ? `<h3>📡 Puertos Encontrados</h3><div class="code-block">${machineData.ports.replace(/\n/g, '<br>')}</div>` : ''}
+                
+                ${machineData.vulnerabilities ? `<h3>⚠️ Vulnerabilidades Identificadas</h3><div class="code-block">${machineData.vulnerabilities.replace(/\n/g, '<br>')}</div>` : ''}
+                
+                ${machineData.exploitation ? `<h3>💥 Explotación</h3><div class="code-block">${machineData.exploitation.replace(/\n/g, '<br>')}</div>` : ''}
+                
+                ${machineData.commands ? `<h3>Comandos Utilizados</h3><div class="code-block">${machineData.commands.replace(/\n/g, '<br>')}</div>` : ''}
+                
+                ${machineData.escalation ? `<h3>🚀 Escalada de Privilegios</h3><div class="code-block">${machineData.escalation.replace(/\n/g, '<br>')}</div>` : ''}
+                
+                ${machineData.userFlag || machineData.rootFlag ? `<h3>🚩 Flags</h3><table>
+                    ${machineData.userFlag ? `<tr><td><strong>User Flag:</strong></td><td><code>${machineData.userFlag}</code></td></tr>` : ''}
+                    ${machineData.rootFlag ? `<tr><td><strong>Root Flag:</strong></td><td><code>${machineData.rootFlag}</code></td></tr>` : ''}
+                </table>` : ''}
+                
+                ${machineData.lessons ? `<h3>📚 Lecciones Aprendidas</h3><div class="code-block">${machineData.lessons.replace(/\n/g, '<br>')}</div>` : ''}
+            `;
+            
+            document.getElementById('preview').innerHTML = previewHTML;
+            
+            showSuccessMessage();
+        }
+        
+        function getDifficultyClass(difficulty) {
+            if (difficulty.includes('Fácil')) return 'difficulty-easy';
+            if (difficulty.includes('Media')) return 'difficulty-medium';
+            if (difficulty.includes('Difícil')) return 'difficulty-hard';
+            return '';
+        }
+        
+        function downloadMarkdown() {
+            const machineData = {
+                machineName: document.getElementById('machineName').value,
+                difficulty: document.getElementById('difficulty').value,
+                targetIP: document.getElementById('targetIP').value,
+                targetOS: document.getElementById('targetOS').value,
+                totalTime: document.getElementById('totalTime').value,
+                description: document.getElementById('description').value,
+                reconnaissance: document.getElementById('reconnaissance').value,
+                ports: document.getElementById('ports').value,
+                vulnerabilities: document.getElementById('vulnerabilities').value,
+                exploitation: document.getElementById('exploitation').value,
+                commands: document.getElementById('commands').value,
+                escalation: document.getElementById('escalation').value,
+                userFlag: document.getElementById('userFlag').value,
+                rootFlag: document.getElementById('rootFlag').value,
+                lessons: document.getElementById('lessons').value
+            };
+            
+            if (!machineData.machineName || !machineData.targetIP) {
+                alert('⚠️ Nombre de máquina e IP objetivo son requeridos');
+                return;
+            }
+            
+            let markdown = `# ${machineData.machineName}
+
+## Información General
+- **Dificultad:** ${machineData.difficulty}
+- **IP Objetivo:** ${machineData.targetIP}
+- **Sistema Operativo:** ${machineData.targetOS || 'No especificado'}
+- **Tiempo Total:** ${machineData.totalTime ? machineData.totalTime + ' horas' : 'No especificado'}
+
+${machineData.description ? `## Descripción
+${machineData.description}\n` : ''}
+
+${machineData.reconnaissance ? `## 🔍 Reconocimiento Pasivo
+\`\`\`
+${machineData.reconnaissance}
+\`\`\`\n` : ''}
+
+${machineData.ports ? `## 📡 Puertos Encontrados
+\`\`\`
+${machineData.ports}
+\`\`\`\n` : ''}
+
+${machineData.vulnerabilities ? `## ⚠️ Vulnerabilidades Identificadas
+\`\`\`
+${machineData.vulnerabilities}
+\`\`\`\n` : ''}
+
+${machineData.exploitation ? `## 💥 Explotación
+${machineData.exploitation}\n` : ''}
+
+${machineData.commands ? `### Comandos Utilizados
+\`\`\`bash
+${machineData.commands}
+\`\`\`\n` : ''}
+
+${machineData.escalation ? `## 🚀 Escalada de Privilegios
+\`\`\`
+${machineData.escalation}
+\`\`\`\n` : ''}
+
+${machineData.userFlag || machineData.rootFlag ? `## 🚩 Flags
+${machineData.userFlag ? `- **User Flag:** ${machineData.userFlag}\n` : ''}${machineData.rootFlag ? `- **Root Flag:** ${machineData.rootFlag}\n` : ''}` : ''}
+
+${machineData.lessons ? `## 📚 Lecciones Aprendidas
+${machineData.lessons}\n` : ''}
+
+---
+*Documentado siguiendo PETS + MITRE ATT&CK*
+`;
+            
+            downloadFile(markdown, `${machineData.machineName}.md`, 'text/markdown');
+        }
+        
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+        
+        function clearForm() {
+            if (confirm('¿Está seguro de que desea limpiar el formulario?')) {
+                document.querySelectorAll('input[type="text"], textarea, select, input[type="number"]').forEach(el => {
+                    el.value = '';
+                });
+                document.getElementById('preview').innerHTML = '<h2>Previsualización del Documento</h2><p style="color: #999;">Complete el formulario y haga clic en "Generar Previsualización" para ver el resultado.</p>';
+            }
+        }
+        
+        function showSuccessMessage() {
+            const msg = document.getElementById('successMsg');
+            msg.style.display = 'block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

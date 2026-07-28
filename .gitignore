@@ -1,0 +1,190 @@
+# ===========================
+# Hack the Box .gitignore
+# ===========================
+
+# Archivos de Sistema Operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+.directory
+
+# Editores de Código
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+.vim/
+*.code-workspace
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+.venv
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Archivos de Configuración Sensibles
+*.pem
+*.key
+*.crt
+id_rsa
+id_rsa.pub
+authorized_keys
+.ssh/
+credentials.json
+secrets.json
+.env
+.env.local
+.env.*.local
+
+# Archivos de Hack the Box
+# (No subir credenciales o información de máquinas activas)
+active_flags.txt
+my_flags.txt
+session_tokens.txt
+htb_credentials.txt
+*.hash
+*.loot
+/exploits/private/
+/writeups/private/
+
+# Herramientas Descargadas
+tools/downloads/
+tools/binaries/
+*.exe
+*.dll
+payloads/compiled/
+
+# Archivos de Escaneo
+nmap_scan*
+nessus_*.nessus
+burp_session*
+*.xml
+
+# Archivos Temporales
+temp/
+tmp/
+.tmp/
+cache/
+.cache/
+*.tmp
+*.bak
+*.backup
+
+# Videos y Archivos Grandes
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.iso
+*.7z
+*.tar.gz
+*.zip
+
+# Capturas de Pantalla Personales
+screenshots/private/
+*.png
+*.jpg
+*.jpeg
+*.gif
+screenshots/*
+
+# Bases de Datos
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+
+# Logs
+*.log
+logs/
+.log/
+
+# Vagrant
+.vagrant/
+Vagrantfile
+
+# Docker
+docker-compose.override.yml
+
+# IDE
+.classpath
+.project
+.pydevproject
+.settings/
+
+# Compilados
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Archivos de compilación
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Vagrant
+Vagrant
+vagrant/
+
+# Otros
+*.orig
+*.rej
+.~*
+
+# ===========================
+# EXCEPCIONES (Subir estos)
+# ===========================
+!.gitkeep
+!.github/
+!.github/workflows/
+!scripts/
+!tools/README.md
+
+# ===========================
+# Archivos Específicos HTB
+# ===========================
+# Excluir writeups sin publicar
+# machines/in_progress/
+
+# Excluir reportes privados
+# reports/private/
+
+# Excluir datos de máquinas activas
+# active_machines/
