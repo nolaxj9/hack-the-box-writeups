@@ -75,7 +75,7 @@ hack-the-box-writeups/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/TU_USUARIO/hack-the-box-writeups.git
+git clone https://github.com/nolaxj9/hack-the-box-writeups.git
 cd hack-the-box-writeups
 
 # (Opcional) Crear ambiente virtual
@@ -326,10 +326,8 @@ Ver [LICENSE](LICENSE) para detalles completos.
 
 ## 📧 Contacto y Redes
 
-- **GitHub:** [@tu_usuario](https://github.com/tu_usuario)
-- **LinkedIn:** [Tu Perfil](https://linkedin.com/in/tu_usuario)
-- **Twitter:** [@tu_usuario](https://twitter.com/tu_usuario)
-- **Email:** tu.email@example.com
+- **GitHub:** [@tu_usuario](https://github.com/nolaxj9)
+- **LinkedIn:** [Tu Perfil](https://linkedin.com/in/kevin-german-grossenbacher)
 
 ---
 
