@@ -27,7 +27,7 @@ django>=4.0.0
 # Cryptography
 # ===========================
 cryptography>=37.0.0
-pycryptodome>=15.0.0
+pycryptodome>=3.23.0
 hashlib  # Built-in
 hmac     # Built-in
 
