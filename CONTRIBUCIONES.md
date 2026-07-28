@@ -14,7 +14,7 @@
 ```bash
 # 1. Fork el repositorio (en GitHub)
 # 2. Clona tu fork
-git clone https://github.com/TU_USUARIO/hack-the-box-writeups.git
+git clone https://github.com/nolaxj9/hack-the-box-writeups.git
 cd hack-the-box-writeups
 
 # 3. Crea una rama para tu máquina
@@ -309,11 +309,11 @@ Cierra #XXX (número del issue si aplica)
 # 1. Crea una cuenta GitHub (si no tienes)
 # 2. Haz fork del repositorio
 # 3. Clona tu fork
-git clone https://github.com/TU_USUARIO/hack-the-box-writeups.git
+git clone https://github.com/nolaxj9/hack-the-box-writeups.git
 cd hack-the-box-writeups
 
 # 4. Configura upstream
-git remote add upstream https://github.com/USUARIO_ORIGINAL/hack-the-box-writeups.git
+git remote add upstream https://github.com/nolaxj9/hack-the-box-writeups.git
 
 # 5. Crea rama
 git checkout -b mi-primera-contribucion
